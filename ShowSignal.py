@@ -21,5 +21,5 @@ class ShowSignal:
         axis[1][1].plot(self.Audio.getVectorFFT()[0],self.Audio.getVectorFFT()[1])
         axis[1][1].set_title(f"Vector FFT với {self.Audio.N_FFT[1]} chiều")
         axis[1][1].set_xlabel("Frequency (Hz)")
-        axis[1][1].set_ylabel("amplitude (g)")
+        axis[1][1].set_ylabel("Amplitude (g)")
         plt.show()
