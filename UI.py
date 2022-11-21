@@ -20,7 +20,7 @@ class UI:
         self.ui.pushButton_2.clicked.connect(self.__UIStatistical)
     def __UIStatistical(self):
         self.ui = UIStatistical.Ui_MainWindow()
-        self.ui.setupUi(self.MainWindow,self.train.Percent,self.train.Statistical[1])
+        self.ui.setupUi(self.MainWindow,self.train.Percent,self.train.Statistical[self.train.Percent.index(max(self.train.Percent))])
         self.MainWindow.show()
         self.ui.pushButton.clicked.connect(self.__UIStart)
     def showVector(self):

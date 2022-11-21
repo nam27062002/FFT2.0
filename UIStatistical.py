@@ -195,10 +195,16 @@ class Ui_MainWindow(object):
         self.tableWidget.setSortingEnabled(False)
         item = self.tableWidget.item(1, 0)
         item.setText(_translate("MainWindow", f"{arr1[0]}%"))
+        if arr1[0] == max(arr1):
+            item.setFont(font)
         item = self.tableWidget.item(1, 1)
         item.setText(_translate("MainWindow",  f"{arr1[1]}%"))
+        if arr1[1] == max(arr1):
+            item.setFont(font)
         item = self.tableWidget.item(1, 2)
         item.setText(_translate("MainWindow",  f"{arr1[2]}%"))
+        if arr1[2] == max(arr1):
+            item.setFont(font)
         self.tableWidget.setSortingEnabled(__sortingEnabled)
         item = self.tableWidget_2.verticalHeaderItem(1)
         item.setText(_translate("MainWindow", "/a/"))

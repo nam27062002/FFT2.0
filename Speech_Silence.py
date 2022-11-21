@@ -101,7 +101,8 @@ class speech_silence:
             x = []
             for j in FrameSignal:
                 FFT = np.fft.fft(j,i)
-                x.append(2/i * np.abs(FFT[:i//2]))
+                FFT = FFT/np.linalg.norm(FFT)
+                x.append(np.abs(FFT[:i//2]))
             v = []
             for i in range(len(x[0])):
                 s = 0
