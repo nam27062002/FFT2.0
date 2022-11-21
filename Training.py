@@ -87,7 +87,7 @@ class Training:
         eigenvector = audio.vectorFFT[index]
         distances = []
         for i in self.eigenvectors[index]:
-            distances.append(self.distanceTowVector(eigenvector,i))
+            distances.append(self.distanceTwoVector(eigenvector,i))
         return [self.vowels[self.indexMinInArr(distances)],f"Dự đoán đây là nguyên âm /{self.vowels[self.indexMinInArr(distances)]}/"]
     
     def indexMinInArr(self,arr):
@@ -99,7 +99,7 @@ class Training:
                 index = i
         return index
     
-    def distanceTowVector(self,v1,v2):
+    def distanceTwoVector(self,v1,v2):
         s = 0
         for i in range(len(v1)):
             s += pow((v1[i] - v2[i]),2)
@@ -180,4 +180,3 @@ class Training:
         for i in self.Count:
             arr.append(round(i / 105 * 100,2))
         return arr
-    

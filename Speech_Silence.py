@@ -87,12 +87,26 @@ class speech_silence:
     
     # Tính vector FFT với số chiều N_FFT
     def setVectorFFT(self):
+        # chia khung tín hiệu ổn định với mỗi khung dài 20ms
+        ms = 0.04
+        FrameSignal = []
+        a = []
+        for i in range(len(self.StableSignal)):
+            a.append(self.StableSignal[i])
+            if i % int(ms*self.F) == 0 or i == len(self.StableSignal) - 1:
+                FrameSignal.append(a)
+                a = []
         arr = []
-        for i in self.N_FFT:
-            FFT = np.fft.fft(self.StableSignal,i)
-            arr.append(2/i * np.abs(FFT[:i//2]))
+        for i in self.N_FFT: # i = 512,1024,2048
+            x = []
+            for j in FrameSignal:
+                FFT = np.fft.fft(j,i)
+                x.append(2/i * np.abs(FFT[:i//2]))
+            v = []
+            for i in range(len(x[0])):
+                s = 0
+                for j in range(len(x)):
+                    s += x[j][i]
+                v.append(s/len(x))
+            arr.append(v)
         return arr
-
-
-
-
